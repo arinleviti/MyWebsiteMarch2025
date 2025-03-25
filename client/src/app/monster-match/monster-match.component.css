@@ -1,0 +1,23 @@
+.section {
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center; /* Centers horizontally */
+    text-align: center; /* Ensures text is also centered */
+    padding: 30px;
+}
+
+.game-image {
+    max-height: 120px; /* Keeps the aspect ratio */
+    width: auto;
+
+}
+.section p {
+    font-weight: 300; /* Matches Bootstrap's .lead */
+}
+.link-to-final-battle-game {
+    padding-top: 30px;
+    font-size: 18px;
+}
+.link-to-repo {
+    font-size: 18px;
+}

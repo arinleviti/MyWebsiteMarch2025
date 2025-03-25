@@ -1,0 +1,15 @@
+.section {
+    padding: 15px 0;
+    text-align: left;
+  }
+  
+  .section h2 {
+    font-size: 30px;
+    margin-bottom: 35px;
+  }
+  
+  .section p {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 300; /* Matches Bootstrap's .lead */
+  }

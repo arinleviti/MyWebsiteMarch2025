@@ -1,0 +1,10 @@
+.profile-image img {
+    max-width: 60%;
+  }
+
+  @media (max-width: 768px) {
+    .profile-image img {
+      padding-top: 30px;
+    }
+  }
+  

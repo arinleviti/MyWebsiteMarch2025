@@ -1,0 +1,51 @@
+/* Make the navbar transparent */
+.navbar {
+    background: transparent !important; /* Semi-transparent background */ 
+    backdrop-filter: blur(10px); /* Blurs content under navbar */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;  /* Apply custom font */
+    padding-top: 30px;
+    padding-left: 25px;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-right: 20px; /* Add space between the navbar items */
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    text-transform: lowercase;
+    font-weight: 600;  /* Make the font bolder */
+    letter-spacing: 1px;  /* Space out letters for a cleaner look */
+  }
+  
+  /* Center navbar items on mobile */
+  @media (max-width: 767px) {
+    .navbar-nav {
+      text-align: center; /* Center navbar items */
+      width: 100%;
+    }
+  
+    .navbar-nav .nav-item {
+      margin-right: 0; /* Remove right margin on mobile */
+    }
+  
+    .navbar-nav .nav-link {
+      padding: 0.75rem;  /* Adjust padding for mobile */
+    }
+  }
+  
+  /* When navbar is scrolled, add background */
+  .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  .navbar-brand {
+    padding-left: 20px; /* Adds padding to the left of the logo */
+    font-size: 35px;
+  }
+  .navbar-collapse{
+    padding-left: 60px;
+  }
+  
