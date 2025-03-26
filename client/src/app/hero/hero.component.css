@@ -72,3 +72,24 @@
     font-size: 16px; /* Adjusts text size */
     cursor: pointer; /* Changes cursor to pointer */
 }
+.waves-button {
+  position: absolute;
+  top: 50%; /* Center the button vertically */
+  left: 30px; /* Center the button horizontally */
+  transform: translateY(-50%) rotate(-90deg); /* Vertical orientation */
+  background: transparent;
+  border: none;
+  color: #232428;
+  cursor: pointer;
+  z-index: 10; /* Ensure the button is above the video */
+  opacity: 1; /* Fully visible text */
+  pointer-events: auto; /* Allow clicking */
+  font-size: 1.1rem;
+    text-transform: lowercase;
+    font-weight: 600;  /* Make the font bolder */
+    letter-spacing: 1px;  /* Space out letters for a cleaner look */
+}
+
+.waves-button:hover {
+  color: black; /* Text color changes to black on hover */
+}

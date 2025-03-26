@@ -1,0 +1,18 @@
+/* Optional Styling */
+.row > .col-md-4 {
+    padding: 20px; /* Adds space inside each section */
+    background-color: #f9f9f9; /* Light background */
+    border-top: 2px solid #232428;
+  }
+  
+  @media (max-width: 768px) {
+    .row > .col-md-4 {
+      margin-bottom: 10px; /* Add space between stacked sections */
+    }
+  }
+  .col-md-4 {
+    border-left: 1px solid #232428;
+    border-right: 1px solid #232428;
+  }
+  .row{
+  }

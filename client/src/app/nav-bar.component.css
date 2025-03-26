@@ -1,51 +1,65 @@
-/* Make the navbar transparent */
-.navbar {
-    background: transparent !important; /* Semi-transparent background */ 
-    backdrop-filter: blur(10px); /* Blurs content under navbar */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
-    transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif;  /* Apply custom font */
-    padding-top: 30px;
-    padding-left: 25px;
-  }
+ /* Make the navbar transparent */
+ .navbar {
+  background: transparent !important; /* Semi-transparent background */ 
+
+  font-family: 'Poppins', sans-serif;  /* Apply custom font */
+  padding-top: 30px;
+  padding-left: 25px;
   
+
+}
+.navbar-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent; /* Semi-transparent background for the blur */
+  height: 110px; /* Set the height to the height of your navbar */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  z-index: 0; /* Make sure the blur is behind the navbar content */
+}
+
+.navbar-nav .nav-item {
+  margin-right: 20px; /* Add space between the navbar items */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+  font-weight: 600;  /* Make the font bolder */
+  letter-spacing: 1px;  /* Space out letters for a cleaner look */
+
+}
+
+/* Center navbar items on mobile */
+@media (max-width: 767px) {
+  .navbar-nav {
+    text-align: center; /* Center navbar items */
+    width: 100%;
+  }
+
   .navbar-nav .nav-item {
-    margin-right: 20px; /* Add space between the navbar items */
+    margin-right: 0; /* Remove right margin on mobile */
   }
-  
+
   .navbar-nav .nav-link {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
-    text-transform: lowercase;
-    font-weight: 600;  /* Make the font bolder */
-    letter-spacing: 1px;  /* Space out letters for a cleaner look */
+    padding: 0.75rem;  /* Adjust padding for mobile */
   }
-  
-  /* Center navbar items on mobile */
-  @media (max-width: 767px) {
-    .navbar-nav {
-      text-align: center; /* Center navbar items */
-      width: 100%;
-    }
-  
-    .navbar-nav .nav-item {
-      margin-right: 0; /* Remove right margin on mobile */
-    }
-  
-    .navbar-nav .nav-link {
-      padding: 0.75rem;  /* Adjust padding for mobile */
-    }
-  }
-  
-  /* When navbar is scrolled, add background */
-  .navbar.scrolled {
-    background-color: rgba(255, 255, 255, 0.9);
-  }
-  .navbar-brand {
-    padding-left: 20px; /* Adds padding to the left of the logo */
-    font-size: 35px;
-  }
-  .navbar-collapse{
-    padding-left: 60px;
-  }
-  
+}
+
+/* When navbar is scrolled, add background */
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.navbar-brand {
+  padding-left: 20px; /* Adds padding to the left of the logo */
+  font-size: 35px;
+}
+.navbar-collapse{
+  padding-left: 60px;
+}
+
