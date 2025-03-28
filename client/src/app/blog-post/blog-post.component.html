@@ -1,13 +1,16 @@
 <div class="blog-post m-4">
     <div class="card-title m-4">
       <h1 class="title">{{ post()?.title }}</h1>  <!-- Display the post's title -->
+      <h6><em>{{post()?.creationDate | date: 'MM-dd-yyyy'}}</em></h6>
       <p class="body">{{ post()?.content }}</p>  <!-- Display the post's content -->
       <div class="image-wrapper">
         @for (image of post()?.photos; track $index)
         {
             <img [src]="post()?.photos?.[$index]?.url"
             (error)="setDefaultImage($event)"
-            alt="Post Image"> <!-- Display the first image URL -->
+            alt="Post Image" class="post-image"
+            (click)="openModal(image.url)"> <!-- Display the first image URL -->
+            
         }
         
       </div>

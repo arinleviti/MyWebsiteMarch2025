@@ -1,5 +1,6 @@
 export interface BlogPost {
     id?: number;
+    creationDate?: Date;
     title?: string;
     content?: string;
     photos?: Photo[]; 
