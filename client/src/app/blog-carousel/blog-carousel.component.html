@@ -1,0 +1,37 @@
+<div class="carousel-container" style="height: 500px;">
+  
+@if( blogsForCarousel.length > 0) {
+<carousel [interval]="5000" [itemsPerSlide]="3" >
+  @for (post of blogsForCarousel; track $index) {
+  <slide class="carousel-item bg-dark">
+    <div class="text-center py-5 bg-white text-#232428">
+      <h2>{{ post.title }}</h2>
+     <i class="fa fa-light fa-comments"></i> 
+      <div class="image-container">
+        <img class="carousel-image" [src]="post.photos?.[0]?.url" (error)="setDefaultImage($event)"/>
+      </div>
+      
+
+      <div>
+        <button routerLink="/blog"
+          type="button"
+          style="
+            border: none !important;
+            background-color: #232428;
+            color: white;
+            font-size: 0.9rem;
+            padding: 5px 15px;
+            border-radius: 5px;
+          "
+          class="btn btn-primary my-custom-btn"
+        >
+          Read in blog
+        </button>
+      </div>
+    </div>
+  </slide>
+
+  }
+</carousel>
+}
+</div>

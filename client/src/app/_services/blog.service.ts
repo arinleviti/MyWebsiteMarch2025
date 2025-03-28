@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 
@@ -10,7 +10,8 @@ import { BlogPost } from '../models/blog-post.model';
 export class BlogService {
 
   private apiUrl= 'http://localhost:5227/api/blog';
-  private http= inject (HttpClient)
+  private http= inject (HttpClient);
+
 
   getBlogPosts() {
     return this.http.get<BlogPost[]>(`${this.apiUrl}`);

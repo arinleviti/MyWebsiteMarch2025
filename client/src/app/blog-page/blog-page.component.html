@@ -1,4 +1,14 @@
-<br><br><br><br><br>
-<div class="blog-container">
-    <h1>Welcome to my blog!</h1>
-</div>
+
+
+    <div class="welcome">
+        <h1 >Welcome to my blog!</h1>
+    </div>
+    
+    <div>
+        @for (post of blogPosts; track $index)
+        {
+        <app-blog-post [post]="post"></app-blog-post> <!-- Pass each post to the BlogPostComponent -->
+        }
+
+    </div>
+

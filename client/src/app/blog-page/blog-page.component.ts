@@ -1,16 +1,16 @@
 import { Component, inject, OnInit, } from '@angular/core';
 import { BlogService } from '../_services/blog.service';
 import { BlogPost } from '../models/blog-post.model';
-import { HttpClientModule } from '@angular/common/http';
+import { BlogPostComponent } from "../blog-post/blog-post.component";
 
 
 @Component({
   selector: 'app-blog-page',
-  imports: [],
+  imports: [BlogPostComponent],
   templateUrl: './blog-page.component.html',
   styleUrl: './blog-page.component.css'
 })
-export class BlogPageComponent implements OnInit {
+export class BlogPageComponent  {
   
   private blogService = inject(BlogService)
   blogPosts: BlogPost[] = [];
@@ -23,10 +23,12 @@ export class BlogPageComponent implements OnInit {
     this.blogService.getBlogPosts().subscribe({
       next: (blogPosts: BlogPost[]) => {
         this.blogPosts = blogPosts
+        console.log(blogPosts);
       },
       error: (err) => {
         console.error('Error loading blog posts:', err);
       }
     })
   }
+ 
 }
