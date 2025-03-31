@@ -7,7 +7,7 @@ export interface BlogPost {
   }
 
   export interface Photo {
-    id: number;
+    id?: number;
     url: string;
-    blogPostId: number;
+    blogPostId?: number;
   }

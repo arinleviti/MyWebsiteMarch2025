@@ -1,0 +1,38 @@
+/* Makes form elements stack vertically */
+form > * {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  /* Optional: Style adjustments */
+  label {
+    font-weight: bold;
+  }
+  
+  input, textarea {
+    width: 100%;
+    max-width: 400px; /* Adjust as needed */
+    padding: 0.5rem;
+  }
+  
+  textarea {
+    min-height: 100px;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.8rem;
+  }

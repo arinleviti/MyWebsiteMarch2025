@@ -4,6 +4,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { BlogService } from '../_services/blog.service';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-blog-carousel',
@@ -18,7 +19,7 @@ blogsForCarousel: BlogPost[] = [];
 
  ngOnInit(): void {
   
-  this.blogService.getBlogPosts().subscribe({ 
+  this.blogService.getBlogPosts().pipe(map(posts => posts.slice(-3))).subscribe({ 
     next: (posts: BlogPost[]) => {
       this.blogsForCarousel = posts;
     },

@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using MyWebsiteMarch2025.Data;
 using MyWebsiteMarch2025.Data.DTOs;
 using MyWebsiteMarch2025.Entities;
+using MyWebsiteMarch2025.Interfaces;
 
 namespace MyWebsiteMarch2025.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class BlogController(DataContext context) : ControllerBase
+public class BlogController(DataContext context, IPhotoService photoService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<BlogPost>>> GetPosts()
@@ -89,6 +90,21 @@ public class BlogController(DataContext context) : ControllerBase
         var post = await context.BlogPost.FirstOrDefaultAsync(x => x.Id == postId);
         if (post == null) return NotFound("This post id doesnt't exist");
 
+        if (post.Photos.Count > 0)
+        {
+            foreach (var photo in post.Photos)
+            {
+                try
+                {
+                    await photoService.DeletePhotoAsync(photo.Url);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to delete photo {photo.Id}: {ex.Message}");
+                }
+            }
+        }
+
         context.BlogPost.Remove(post);
         // Save changes to the database
         try
@@ -101,6 +117,27 @@ public class BlogController(DataContext context) : ControllerBase
             return StatusCode(500, $"Internal server error: {ex.Message}");
         }
         return Ok("post deleted succesfully");
+    }
+
+    [HttpPost("add-photo/{postId}")]
+    public async Task<ActionResult<Photo>> AddPhoto ([FromForm]IFormFile file, int postId)
+    {
+        var post = await context.BlogPost.FirstOrDefaultAsync(p => p.Id == postId);
+        if (post == null) return BadRequest("Cannot find the post");
+
+        var result = await photoService.AddPhotoAsync(file);
+        if (result.Error != null) return BadRequest(result.Error.Message);
+
+        var photo = new Photo
+        {
+            Url = result.SecureUrl.AbsoluteUri,
+            BlogPostId = postId
+        };
+
+        post.Photos.Add(photo);
+        if (await context.SaveChangesAsync() > 0) return Ok(photo);
+        return BadRequest("Problem adding photo");
+
     }
 
 }
