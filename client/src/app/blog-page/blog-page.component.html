@@ -5,7 +5,7 @@
     </div>
     
     <div>
-        @for (post of blogPosts; track $index)
+        @for (post of blogPosts; track $index)  
         {
         <app-blog-post [post]="post"></app-blog-post> <!-- Pass each post to the BlogPostComponent -->
         }

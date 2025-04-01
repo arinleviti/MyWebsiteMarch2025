@@ -32,6 +32,26 @@ export class BlogFormComponent implements OnInit {
     creationDate: [new Date(), Validators.required]
   });
 
+  deleteForm: FormGroup = this.fb.group({
+    postId: [0, Validators.required]
+  });
+
+  OnDeletePost() {
+    if( this.deleteForm.invalid) {
+      return;
+    }
+    const postId = this.deleteForm.value.postId;
+    this.blogService.deletePost(postId).subscribe({
+      next: (response) => {
+        console.log('Post deleted successfully', response);
+        this.postChange.emit(response);
+      },
+      error: (err) => {
+        console.error('Error deleting post', err);
+      }
+    })
+  }
+
   onSubmit() {
     const formData: SendPostDto = {
       title: this.blogForm.value.title,

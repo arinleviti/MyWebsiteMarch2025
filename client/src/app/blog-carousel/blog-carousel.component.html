@@ -1,37 +1,37 @@
 <div class="carousel-container" style="height: 500px;">
   
-@if( blogsForCarousel.length > 0) {
-<carousel [interval]="5000" [itemsPerSlide]="3" >
-  @for (post of blogsForCarousel; track $index) {
-  <slide class="carousel-item bg-dark">
-    <div class="text-center py-5 bg-white text-#232428">
-      <h2>{{ post.title }}</h2>
-     <i class="fa fa-light fa-comments"></i> 
-      <div class="image-container">
-        <img class="carousel-image" [src]="post.photos?.[0]?.url" (error)="setDefaultImage($event)"/>
-      </div>
+  @if(slides.length > 0) {
+  <carousel 
+  [startFromIndex]="0" 
+  [itemsPerSlide]="itemsPerSlide" 
+  [singleSlideOffset]="singleSlideOffset" 
+  [noWrap]="noWrap" 
+  [interval]="0" 
+  [startFromIndex]="0"
+  (slideRangeChange)="onSlideRangeChange($event)">
+
+    <slide *ngFor="let slide of slides; let index=index">
       
-
-      <div>
-        <button routerLink="/blog"
-          type="button"
-          style="
-            border: none !important;
-            background-color: #232428;
-            color: white;
-            font-size: 0.9rem;
-            padding: 5px 15px;
-            border-radius: 5px;
-          "
-          class="btn btn-primary my-custom-btn"
-        >
-          Read in blog
-        </button>
+      <div class="text-center py-5 bg-white text-#232428 ">
+        <h2>{{ slide.title }}</h2>
+        <i class="fa fa-light fa-comments"></i>
+        <div class="image-container">
+          <img class="carousel-image" [src]="slide.image" (error)="setDefaultImage($event)" />
+        </div>
       </div>
-    </div>
-  </slide>
+    </slide>
 
+  </carousel>
   }
-</carousel>
-}
+
 </div>
+
+<!-- <div class="container">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" >
+      Infinite
+    </label>
+  </div>
+</div>
+<pre class="card card-block card-header">{{slidesChangeMessage}}</pre> -->

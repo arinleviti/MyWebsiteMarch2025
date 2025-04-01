@@ -22,8 +22,11 @@ export class BlogPageComponent  {
   loadPosts() {
     this.blogService.getBlogPosts().subscribe({
       next: (blogPosts: BlogPost[]) => {
-        this.blogPosts = blogPosts
-        console.log(blogPosts);
+        this.blogPosts= [...blogPosts].sort((a, b) => 
+           b.id! - a.id!
+        )
+       
+        console.log(this.blogPosts);
       },
       error: (err) => {
         console.error('Error loading blog posts:', err);

@@ -88,3 +88,13 @@
     </div>
 </div>
   
+<div class="delete-post">
+    <form id="id" [formGroup]="deleteForm" (ngSubmit)="OnDeletePost()" >
+        <label for="postId">Post ID:</label>
+        <input type="number" id="postId" formControlName="postId" required />
+        
+        <button class="btn btn-danger mt-2" [disabled]="deleteForm.invalid">
+            <i class="fa fa-trash"></i> Delete Post
+        </button>
+    </form>
+</div>

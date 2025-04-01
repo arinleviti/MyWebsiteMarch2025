@@ -9,20 +9,11 @@
   overflow: hidden;
   border-top: 2px solid #232428;
   display: flex;
-  flex-direction: column;
-  
 }
-
 .carousel-item {
-  position: relative;
-  height: 100%;
   border-top: 2px solid #232428;
   border-bottom: 2px solid #232428;
   border-left: 2px solid #232428;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  
 }
 
 .text-center {
@@ -42,12 +33,8 @@
   margin-top: 40px;
   background-color: #a9c1fd !important;
 }
-
 .carousel-image {
   max-width: 200px;
   max-height: 200px;
   object-fit: contain;
-}
-.my-custom-btn{
-  margin-top: 40px;
 }

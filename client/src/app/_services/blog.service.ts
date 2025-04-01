@@ -32,4 +32,8 @@ export class BlogService {
     formData.append('file', file);
     return this.http.post(`${this.apiUrl}/add-photo/${postId}`, formData)
   }
+
+  deletePost(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete-post/${id}`, { responseType: 'text' });
+  }
 }
