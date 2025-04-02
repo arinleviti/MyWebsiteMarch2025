@@ -17,10 +17,19 @@
           <a class="nav-link" routerLink="/blog">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
+          <a  class="nav-link" href="#projects" (click)="$event.preventDefault(); scrollToSection('projects')">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link" href="mailto:arin.leviti@gmail.com">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://drive.google.com/file/d/1jBSfRb5HviWMverflp7Wf1RXk9Rnu1xv/view?usp=drive_link">My CV</a>
+        </li>
+        <li class=" github-icon">
+         <a class="nav-link" href="https://github.com/arinleviti"><i class="fa-brands fa-github nav-link" ></i></a>
+            
+          
+          
         </li>
       </ul>
     </div>

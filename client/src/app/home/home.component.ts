@@ -6,10 +6,11 @@ import { MonsterMatchComponent } from "../monster-match/monster-match.component"
 import { FinalBattleComponent } from "../final-battle/final-battle.component";
 import { ExperienceComponent } from "../experience/experience.component";
 import { BlogCarouselComponent } from "../blog-carousel/blog-carousel.component";
+import { EducationComponent } from "../education/education.component";
 
 @Component({
   selector: 'app-home',
-  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent],
+  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

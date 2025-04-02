@@ -1,0 +1,19 @@
+.container-fluid {
+    background-color: #f9f9f9; /* Light background */
+    padding-bottom: 70px;
+  border-top: 2px solid #232428;
+
+}
+.section-title{
+    padding-top: 70px;
+    padding-bottom: 40px;
+}
+.col-12{
+    border-top: 2px solid #232428;
+}
+
+.border-line {
+  display: block;
+  border-bottom: 2px solid #232428; /* Adjust thickness and color */
+
+}

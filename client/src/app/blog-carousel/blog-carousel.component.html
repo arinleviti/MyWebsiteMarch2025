@@ -16,7 +16,9 @@
         <h2>{{ slide.title }}</h2>
         <i class="fa fa-light fa-comments"></i>
         <div class="image-container">
-          <img class="carousel-image" [src]="slide.image" (error)="setDefaultImage($event)" />
+          <a routerLink="/blog" href="">
+          <img  class="carousel-image" [src]="slide.image" (error)="setDefaultImage($event)" />
+        </a>
         </div>
       </div>
     </slide>

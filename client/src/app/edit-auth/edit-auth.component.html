@@ -1,0 +1,13 @@
+<br><br><br><br><br><br>
+<!-- edit-auth.component.html -->
+<div class="auth-container">
+    <h2>Admin Access Required</h2>
+    <input 
+      type="password" 
+      [(ngModel)]="password" 
+      placeholder="Enter password"
+      (keyup.enter)="verifyPassword()"
+    >
+    <button (click)="verifyPassword()">Submit</button>
+    <p *ngIf="error" class="error">Incorrect password</p>
+  </div>

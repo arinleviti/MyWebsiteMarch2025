@@ -63,3 +63,13 @@
   padding-left: 60px;
 }
 
+.github-icon {
+  margin-top: -15px;
+ /* Moves it 5px downward */
+}
+
+.github-icon .nav-link {
+  font-size: 1.2em; /* Makes it 20% larger */
+  /* Alternative size controls: */
+  /* width: 24px; height: 24px; */
+}

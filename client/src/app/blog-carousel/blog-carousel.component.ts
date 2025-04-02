@@ -5,10 +5,11 @@ import { BlogService } from '../_services/blog.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { map } from 'rxjs';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-blog-carousel',
-  imports: [CarouselModule, FontAwesomeModule, NgFor],
+  imports: [CarouselModule, FontAwesomeModule, NgFor, RouterLink],
   templateUrl: './blog-carousel.component.html',
   styleUrl: './blog-carousel.component.css'
 })

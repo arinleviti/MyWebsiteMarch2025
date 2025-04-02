@@ -1,0 +1,10 @@
+<!-- privacy.component.html -->
+<div class="modal-header">
+    <h4 class="modal-title">Privacy Policy</h4>
+    <button type="button" class="btn-close" (click)="modalRef.hide()" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    @for (section of policySections; track $index) {
+      <p>{{ section }}</p>
+    }
+  </div>
