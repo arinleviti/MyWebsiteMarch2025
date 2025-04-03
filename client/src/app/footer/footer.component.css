@@ -1,9 +1,10 @@
 /* footer.component.css */
 .site-footer {
-    background-color: #f8f9fa;
+  position: relative; /* Needed for absolute positioning context */
     padding: 0.5rem 0; /* Reduced padding for thinner footer */
     border-top: 1px solid #e9ecef;
     font-size: 0.9rem;
+
   }
   
   .footer-content {
@@ -27,4 +28,24 @@
     color: black;
     text-decoration: underline;
     cursor: pointer; /* Shows the hand cursor */
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensures it's behind the content */
+    /* overflow: hidden; */ /* Hide video overflow */
+  }
+  
+  .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Set width to 100% to fit container */
+    height: 100%; /* Ensure the video covers the container without gaps */
+    object-fit: cover; /* Ensure the video covers the entire section */
+  opacity: 0.5;
   }

@@ -14,9 +14,10 @@ export class BlogPageComponent  {
   
   private blogService = inject(BlogService)
   blogPosts: BlogPost[] = [];
-  
+  isLoggedIn: boolean = false;
   ngOnInit(): void {
     this.loadPosts();
+    this.isAdminLoggedIn();
   }
   
   loadPosts() {
@@ -34,4 +35,10 @@ export class BlogPageComponent  {
     })
   }
  
-}
+  isAdminLoggedIn(): boolean {
+  if(sessionStorage.getItem('editAuth') === 'true')  
+  this.isLoggedIn = true;
+    return this.isLoggedIn;
+  }
+ }
+

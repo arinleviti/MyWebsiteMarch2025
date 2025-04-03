@@ -93,3 +93,12 @@
 .waves-button:hover {
   color: black; /* Text color changes to black on hover */
 }
+.col-md-6:last-child {
+  padding-right: 80px; /* Instead of Bootstrap's default */
+}
+@media (max-width: 768px) {
+  .hero-container .col-md-6:last-child {
+    padding-left: 30px !important; /* Add left padding on mobile */
+    padding-right: 30px !important; /* Optional: add right padding for balance */
+  }
+}

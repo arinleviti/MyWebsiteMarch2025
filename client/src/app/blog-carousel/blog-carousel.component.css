@@ -31,7 +31,9 @@
   align-items: center;
   min-height: 200px;
   margin-top: 40px;
-  background-color: #a9c1fd !important;
+  /* background-color: #d5dff7 !important; */
+  background-image: url('https://res.cloudinary.com/dvr9t29vj/image/upload/v1743692432/WavesResized_leheoa.png');
+  background-position: left bottom;
 }
 .carousel-image {
   max-width: 200px;

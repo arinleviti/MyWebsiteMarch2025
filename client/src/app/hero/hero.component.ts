@@ -8,14 +8,18 @@ import { ProfileImageComponent } from '../profile-image/profile-image.component'
   styleUrl: './hero.component.css'
 })
 export class HeroComponent implements AfterViewInit {
+  /* ViewChild('backgroundVideo') Gets a reference to the <video #backgroundVideo> element in the template. 
+  ElementRef<HTMLVideoElement> ensures TypeScript knows this is a <video> element.*/
   @ViewChild('backgroundVideo') backgroundVideo!: ElementRef<HTMLVideoElement>;
 
+  isVideoOn: Boolean = false;
   ngAfterViewInit() {
     const video = this.backgroundVideo.nativeElement;
     if (video) {
       video.play().catch(error => {
         console.error("Autoplay blocked", error);
         this.enablePlayOnUserInteraction();
+        this.isVideoOn = true;
       });
     }
   }
@@ -27,8 +31,13 @@ export class HeroComponent implements AfterViewInit {
 
   playVideoOnInteraction() {
     const video = this.backgroundVideo?.nativeElement;
-    if (video) {
+    if (video && !this.isVideoOn) {
+      this.isVideoOn = true;
       video.play().catch(error => console.error("Autoplay blocked", error));
+    }
+    else if (video && this.isVideoOn) {
+      this.isVideoOn = false;
+      video.pause();
     }
   }
 

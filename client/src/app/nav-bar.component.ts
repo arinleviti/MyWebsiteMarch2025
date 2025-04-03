@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class NavBarComponent {
   private viewportScroller = inject(ViewportScroller);
+ 
 
   scrollToSection(sectionId: string) {
     // 1. Get navbar height (or use 70px as default)
@@ -36,5 +37,6 @@ export class NavBarComponent {
     }
   }
   
+
  
 }

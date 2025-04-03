@@ -1,0 +1,9 @@
+.container-fluid {
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+    width: 100%;       /* Ensures body doesn't exceed viewport width */
+    margin: 0;         /* Removes default margins */
+    padding: 0;        /* Removes default padding */
+  }
+  .navbar {
+    z-index: 10;;
+  }

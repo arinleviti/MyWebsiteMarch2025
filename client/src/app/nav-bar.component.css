@@ -38,7 +38,7 @@
 /* Center navbar items on mobile */
 @media (max-width: 767px) {
   .navbar-nav {
-    text-align: center; /* Center navbar items */
+    text-align: right; /* Center navbar items */
     width: 100%;
   }
 

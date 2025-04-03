@@ -11,3 +11,8 @@
     object-fit: contain;   /* Ensure the image fits without distortion */
     border-radius: 4px;    /* Optional: Add rounded corners */
   }
+  .blog-post{
+    border: #232428 solid 2px;
+    
+    
+  }

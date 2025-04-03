@@ -4,10 +4,19 @@
         <h1 >Welcome to my blog!</h1>
     </div>
     
-    <div>
+    <div class="posts-container">
         @for (post of blogPosts; track $index)  
         {
-        <app-blog-post [post]="post"></app-blog-post> <!-- Pass each post to the BlogPostComponent -->
+            <div class="post-wrapper"> <!-- Added wrapper div -->
+                <div class="post-bg"></div> <!-- Background image element -->
+                <app-blog-post [post]="post"></app-blog-post> <!-- Pass each post to the BlogPostComponent -->
+            
+        
+        @if(isLoggedIn)
+        {
+           <h6>PostId:{{ post.id }}</h6> 
+        }
+    </div>
         }
 
     </div>

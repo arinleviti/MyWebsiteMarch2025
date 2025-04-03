@@ -1,10 +1,11 @@
-import { Component, inject, TemplateRef } from '@angular/core';
+import { Component, ElementRef, inject, TemplateRef, ViewChild } from '@angular/core';
 import { PrivacyComponent } from "../modals/privacy/privacy.component";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CookieConsentComponent } from "../cookie-consent/cookie-consent.component";
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [CookieConsentComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
@@ -19,4 +20,32 @@ export class FooterComponent {
       ignoreBackdropClick: true
     });
   }
+
+  @ViewChild('backgroundVideo') backgroundVideo!: ElementRef<HTMLVideoElement>;
+
+
+  ngAfterViewInit() {
+    const video = this.backgroundVideo.nativeElement;
+    if (video) {
+      video.play().catch(error => {
+        console.error("Autoplay blocked", error);
+        this.enablePlayOnUserInteraction();
+
+      });
+    }
+  }
+  
+  enablePlayOnUserInteraction() {
+    window.addEventListener('scroll', this.playVideoOnInteraction.bind(this), { once: true });
+    window.addEventListener('click', this.playVideoOnInteraction.bind(this), { once: true });
+  }
+
+  playVideoOnInteraction() {
+    const video = this.backgroundVideo?.nativeElement;
+    if (video ) {
+      video.play().catch(error => console.error("Autoplay blocked", error));
+    }
+  }
+
+ 
 }
