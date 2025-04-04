@@ -1,45 +1,65 @@
-import { AfterViewInit, Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnInit, output, signal, ViewChild } from '@angular/core';
 import { ProfileImageComponent } from '../profile-image/profile-image.component';
+import { ActivatedRoute } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { AssetLoaderService } from '../_services/asset-loader.service';
+
 
 @Component({
   selector: 'app-hero',
-  imports: [ProfileImageComponent],
+  imports: [ProfileImageComponent, NgIf],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
 export class HeroComponent implements AfterViewInit {
-  /* ViewChild('backgroundVideo') Gets a reference to the <video #backgroundVideo> element in the template. 
-  ElementRef<HTMLVideoElement> ensures TypeScript knows this is a <video> element.*/
-  @ViewChild('backgroundVideo') backgroundVideo!: ElementRef<HTMLVideoElement>;
+  @ViewChild('backgroundVideoElement') backgroundVideoElement!: ElementRef; // Reference to the video container
+  assetLoader = inject(AssetLoaderService); // Inject the AssetLoaderService to preload assets
 
-  isVideoOn: Boolean = false;
+  video: HTMLVideoElement | undefined;
+
   ngAfterViewInit() {
-    const video = this.backgroundVideo.nativeElement;
-    if (video) {
-      video.play().catch(error => {
-        console.error("Autoplay blocked", error);
-        this.enablePlayOnUserInteraction();
-        this.isVideoOn = true;
-      });
-    }
-  }
-  
-  enablePlayOnUserInteraction() {
-    window.addEventListener('scroll', this.playVideoOnInteraction.bind(this), { once: true });
-    window.addEventListener('click', this.playVideoOnInteraction.bind(this), { once: true });
+    this.loadAndAppendVideo();  // Load and append the video
   }
 
-  playVideoOnInteraction() {
-    const video = this.backgroundVideo?.nativeElement;
-    if (video && !this.isVideoOn) {
-      this.isVideoOn = true;
-      video.play().catch(error => console.error("Autoplay blocked", error));
-    }
-    else if (video && this.isVideoOn) {
-      this.isVideoOn = false;
-      video.pause();
+  loadAndAppendVideo() {
+    const videoUrl = 'https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm';
+    this.video = this.assetLoader.getVideoUrl(videoUrl);
+    console.log('Retrieved video:', this.video); // Debug line
+    if (this.video) {
+      // Configure video properties
+      this.video.autoplay = true;
+      this.video.loop = true;
+      this.video.muted = true;
+      this.video.style.position = 'absolute';
+      this.video.style.zIndex = '-1'; // Ensure the video is behind other elements
+      this.video.style.top = '0';
+    this.video.style.left = '50%';
+    this.video.style.translate = '-50%'; // Center the video horizontally
+    this.video.style.width = '100%'; // Full width
+    this.video.style.minHeight = '100%'; // Full height
+    this.video.style.objectFit = 'cover'; // Cover the entire area
+      
+      // Append to container
+      this.backgroundVideoElement.nativeElement.appendChild(this.video);
+      
+      // Try to play programmatically (may be required on some mobile devices)
+      this.video.play().catch(e => console.log('Auto-play prevented:', e));
+    } else {
+      console.error('Failed to retrieve video element');
     }
   }
 
-
+  playVideo() {
+    if (!this.video) return;
+    if (this.video.paused) {
+      this.video.play().catch(e => console.log('Auto-play prevented:', e));   
+    } else {
+      this.video.pause(); // Pause the video if it's playing
+    }
+  }
 }
+
+
+
+
+

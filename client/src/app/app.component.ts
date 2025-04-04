@@ -4,13 +4,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarComponent } from "./nav-bar.component";
 import { HeroComponent } from "./hero/hero.component";
 import { FooterComponent } from "./footer/footer.component";
-import { CookieConsentComponent } from "./cookie-consent/cookie-consent.component";
+
 
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, FontAwesomeModule, NavBarComponent, FooterComponent, CookieConsentComponent],
+  imports: [RouterOutlet, FontAwesomeModule, NavBarComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

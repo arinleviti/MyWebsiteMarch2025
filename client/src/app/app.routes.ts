@@ -6,6 +6,7 @@ import { BlogFormComponent } from './blog-form/blog-form.component';
 import { editGuard } from './guards/edit.guard';
 import { EditAuthComponent } from './edit-auth/edit-auth.component';
 
+
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'blog', component: BlogPageComponent},

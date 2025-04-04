@@ -1,20 +1,26 @@
+<!-- Navbar -->
+@if(imagesLoaded)
+{
+  <app-nav-bar></app-nav-bar>
 
-    <!-- Navbar -->
-    <app-nav-bar></app-nav-bar>
-    <app-hero></app-hero>
-    <div class="row" id="projects">
-      <div class="col-md-4">
-        <app-journey></app-journey>
-      </div>
-      <div class="col-md-4">
-        <app-monster-match></app-monster-match>
-      </div>
-      <div class="col-md-4">
-        <app-final-battle></app-final-battle>
-      </div>
-      
-    </div>  
-  
-  <app-experience></app-experience>
-  <app-blog-carousel></app-blog-carousel>
-  <app-education></app-education>
+<app-hero ></app-hero>
+
+
+<div class="row" id="projects">
+  <div class="col-md-4">
+    <app-journey></app-journey>
+  </div>
+  <div class="col-md-4">
+    <app-monster-match></app-monster-match>
+  </div>
+  <div class="col-md-4">
+    <app-final-battle></app-final-battle>
+  </div>
+</div>
+
+<app-experience></app-experience>
+<app-blog-carousel></app-blog-carousel>
+<app-education></app-education>
+}
+
+
