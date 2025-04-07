@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 import { SendPostDto } from '../models/send-post-dto';
+import { PaginatedResult } from '../models/pagination';
 
 
 @Injectable({
@@ -13,6 +14,30 @@ export class BlogService {
   private apiUrl= 'http://localhost:5227/api/blog';
   private http= inject (HttpClient);
 
+  paginatedResult = signal<PaginatedResult<BlogPost[]> | null>(null);
+
+  getPaginatedPosts(pageNumber?: number, pageSize?: number) {
+    // Angular class used to represent URL parameters
+    let params = new HttpParams();
+    if (pageNumber !== undefined && pageSize !== undefined) {
+      params = params.append('pageNumber', pageNumber.toString());
+      params = params.append('pageSize', pageSize.toString());
+    }
+    //observe: 'response': This instructs Angular to include the full HTTP response (headers and body) in the result, rather than just the body.
+    //when we specify observe: 'response', Angular will return the entire HTTP response, including headers and status code, instead of just the response body.
+    //The response body is assumed to contain an array of BlogPost[], and the Pagination header is parsed to extract pagination details.
+    return this.http.get<BlogPost[]>(`${this.apiUrl}/with-pagination`, { observe: 'response', params }).pipe(
+      map(response => {
+        //The response body is assumed to contain an array of BlogPost[], and the Pagination header is parsed to extract pagination details.
+        const pagination = JSON.parse(response.headers.get('Pagination')!);
+        
+        return {
+          items: response.body as BlogPost[],
+          pagination
+        };
+      })
+    );
+  }
 
   getBlogPosts() {
     return this.http.get<BlogPost[]>(`${this.apiUrl}`);

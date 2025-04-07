@@ -1,23 +1,40 @@
+<div class="welcome">
+    <h1>Welcome to my blog!</h1>
+</div>
+
+<div class="posts-container">
+    @for (post of blogPosts; track post.id)
+    {
+    <div class="post-wrapper">
+        <div class="post-bg"></div>
+        <app-blog-post [post]="post"></app-blog-post>
 
 
-    <div class="welcome">
-        <h1 >Welcome to my blog!</h1>
+        @if(isLoggedIn)
+        {
+        <h6>PostId:{{ post.id }}</h6>
+        }
+
     </div>
-    
+
+    }
+
+</div>
+<pagination class="custom-pagination" [totalItems]="totalItems" 
+[itemsPerPage]="pageSize" 
+(pageChanged)="onPageChange($event.page)"></pagination>
+
+<!-- 
     <div class="posts-container">
         @for (post of blogPosts; track $index)  
         {
-            <div class="post-wrapper"> <!-- Added wrapper div -->
-                <div class="post-bg"></div> <!-- Background image element -->
-                <app-blog-post [post]="post"></app-blog-post> <!-- Pass each post to the BlogPostComponent -->
+            <div class="post-wrapper"> 
+                <div class="post-bg"></div> 
+                <app-blog-post [post]="post"></app-blog-post> 
             
         
         @if(isLoggedIn)
         {
            <h6>PostId:{{ post.id }}</h6> 
         }
-    </div>
-        }
-
-    </div>
-
+    </div> -->

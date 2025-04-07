@@ -35,3 +35,15 @@ app-blog-post {
     display: block;
 
 }
+
+/* Center the pagination container */
+.custom-pagination {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically */
+    margin-top: 20px;         /* Adjust the top margin to your liking */
+  }
+  
+
+  
+  

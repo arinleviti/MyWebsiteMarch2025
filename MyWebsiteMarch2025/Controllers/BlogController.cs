@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using MyWebsiteMarch2025.Data;
 using MyWebsiteMarch2025.Data.DTOs;
 using MyWebsiteMarch2025.Entities;
+using MyWebsiteMarch2025.Extensions;
+using MyWebsiteMarch2025.Helpers;
 using MyWebsiteMarch2025.Interfaces;
 
 namespace MyWebsiteMarch2025.Controllers;
@@ -21,6 +23,17 @@ public class BlogController(DataContext context, IPhotoService photoService) : C
         if (posts == null) return NotFound();
         return posts;
     }
+
+    [HttpGet("with-pagination")]
+    public async Task<ActionResult<IEnumerable<BlogPost>>> GetPaginatedPosts([FromQuery] UsersParams usersParams)
+    {
+        var query = context.BlogPost.Include(bp => bp.Photos).AsQueryable();
+        query = query.OrderByDescending(bp => bp.Id);
+        var posts = await PagedList<BlogPost>.CreateAsync(query, usersParams.PageNumber, usersParams.PageSize);
+        Response.AddPaginationHeader(posts);
+        return Ok(posts);
+    }
+    
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<BlogPost>> GetPostById(int id)
