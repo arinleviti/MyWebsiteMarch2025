@@ -21,7 +21,7 @@ export class BlogFormComponent implements OnInit {
   uploader? : FileUploader;
   hasBaseDropZoneOver = false;
   postId: number = 0;
-  baseUrl = 'http://localhost:5227/blog/api'
+ 
   postChange = output<BlogPost>();
 
   post = input<BlogPost>();

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -7,8 +7,8 @@ export class ConfigService {
 
   private readonly config = {
     // Development defaults
-    adminPassword: 'Lolita1984$',
-    apiUrl: 'http://localhost:4200'
+    adminPassword: environment.adminPassword,
+    apiUrl: environment.urlForAdmin
   };
 
   get adminPassword(): string {

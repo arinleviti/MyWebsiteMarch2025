@@ -28,6 +28,18 @@ export class HomeComponent implements OnInit {
   //preload images and videos
 
   ngOnInit() {
+
+    // Wake up Cloudinary
+  fetch('https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm', {
+    method: 'HEAD',
+    mode: 'no-cors'
+  }) .then(() => {
+    console.log('🟢 Cloudinary video wake-up request sent successfully.');
+  })
+  .catch((err) => {
+    console.log('🔴 Cloudinary video wake-up request failed:', err);
+  });
+
     const imagePromises = this.imagesUrls.map(url => this.assetLoader.preloadImage(url));
     const videoPromises = this.videosUrls.map(url => this.assetLoader.preloadVideo(url));
   

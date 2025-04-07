@@ -34,7 +34,7 @@ export class AssetLoaderService {
       video.setAttribute('playsinline', '');
       video.src = url;
       // This runs when the video is fully loaded (or nearly so)
-      video.oncanplaythrough = () => {
+      video.onloadeddata = () => {
         this.videos.set(url, video); // Store the full element
         resolve();
       };

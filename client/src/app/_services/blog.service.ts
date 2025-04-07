@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { BlogPost } from '../models/blog-post.model';
 import { SendPostDto } from '../models/send-post-dto';
 import { PaginatedResult } from '../models/pagination';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { PaginatedResult } from '../models/pagination';
 })
 export class BlogService {
 
-  private apiUrl= 'http://localhost:5227/api/blog';
+  private apiUrl= environment.apiUrl; // Use the environment variable for the API URL
   private http= inject (HttpClient);
 
   paginatedResult = signal<PaginatedResult<BlogPost[]> | null>(null);
