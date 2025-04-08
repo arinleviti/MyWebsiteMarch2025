@@ -18,7 +18,7 @@ export class BlogPageComponent  {
   isLoggedIn: boolean = false;
 
   pageNumber: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 5;
   totalItems: number = 0; // Total number of items for pagination
 
   ngOnInit(): void {

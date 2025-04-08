@@ -10,10 +10,15 @@
 }
 .col-12{
     border-top: 2px solid #232428;
+    
 }
 
 .border-line {
   display: block;
   border-bottom: 2px solid #232428; /* Adjust thickness and color */
 
+}
+.exp-container{
+  padding-left: 15px;
+  padding-right: 15px;
 }

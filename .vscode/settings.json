@@ -1,1 +1,4 @@
-{}
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/effb882e-2c39-4f3f-96bd-ba8aea3da8a6/resourceGroups/MyWebsite2025_group/providers/Microsoft.Web/sites/MyWebsite2025",
+    "appService.deploySubpath": "MyWebsiteMarch2025\\bin\\Publish"
+}

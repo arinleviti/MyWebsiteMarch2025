@@ -14,4 +14,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="blogPosts.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
