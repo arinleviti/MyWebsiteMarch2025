@@ -18,7 +18,7 @@ export class HeroComponent implements AfterViewInit {
   video: HTMLVideoElement | undefined;
 
   ngAfterViewInit() {
-    const url = 'https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm';
+    const url = '/bgvideo.webm';
     const video = this.assetLoader.getVideoElement(url);
   
     if (!video) {

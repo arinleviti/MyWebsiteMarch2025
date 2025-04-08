@@ -73,3 +73,14 @@
   /* Alternative size controls: */
   /* width: 24px; height: 24px; */
 }
+
+.linkedin-icon {
+  margin-top: -10px;
+ /* Moves it 5px downward */
+}
+
+.linkedin-icon .nav-link {
+  font-size: 1.6em; /* Makes it 20% larger */
+  /* Alternative size controls: */
+  /* width: 24px; height: 24px; */
+}

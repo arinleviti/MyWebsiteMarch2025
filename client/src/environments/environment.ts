@@ -1,7 +1,8 @@
 console.log("🌐 LOADED: environment.ts (PRODUCTION)");
 export const environment = {
     production: true,
-    apiUrl: 'https://your-api.azurewebsites.net/api/blog',
+    apiUrl: 'http://localhost:5227/api/blog',
   adminPassword: 'yourProductionPassword',
-  urlForAdmin: 'http://xxx.azurewebsites.net',  // Production API endpoint for admin
+  urlForAdmin: '',  // Production API endpoint for admin
+  databaseUrl: 'C:/Users/alevi/Documents/GitHub/MyWebsiteMarch2025/MyWebsiteMarch2025/blogPosts.db'
 };

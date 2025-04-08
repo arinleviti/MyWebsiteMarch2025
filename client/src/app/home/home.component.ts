@@ -23,14 +23,14 @@ export class HomeComponent implements OnInit {
   assetsLoaded = false;
   imagesUrls = [
     'https://res.cloudinary.com/dvr9t29vj/image/upload/v1742809780/aragonai-9a4d9777-c4a5-49a7-9ff9-b8f2ed4fc6a6_mvdem8.jpg']
-  videosUrls = ['https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm']
+  videosUrls = ['/bgvideo.webm']
 
   //preload images and videos
 
   ngOnInit() {
 
     // Wake up Cloudinary
-  fetch('https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm', {
+/*   fetch('https://res.cloudinary.com/dvr9t29vj/video/upload/v1742823869/266049_tiny_bkjizq.webm', {
     method: 'HEAD',
     mode: 'no-cors'
   }) .then(() => {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
   })
   .catch((err) => {
     console.log('🔴 Cloudinary video wake-up request failed:', err);
-  });
+  }); */
 
     const imagePromises = this.imagesUrls.map(url => this.assetLoader.preloadImage(url));
     const videoPromises = this.videosUrls.map(url => this.assetLoader.preloadVideo(url));

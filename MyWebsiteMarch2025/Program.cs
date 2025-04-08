@@ -8,6 +8,7 @@ using MyWebsiteMarch2025.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddControllers();
 builder.Services.AddControllers()
     .AddJsonOptions(options => {
@@ -39,9 +40,16 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 
 
 app.MapControllers();
+
+// Add fallback for Angular routes
+app.MapFallbackToController("Index", "Fallback");
 app.Run();
 
