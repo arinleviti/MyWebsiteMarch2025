@@ -1,0 +1,26 @@
+.icon-container {
+    font-size: 80px;
+    
+}
+.icon-row {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* space between icons */
+    justify-content: center; /* horizontal centering */
+    border-top: 2px solid #232428;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+  }
+  .unity-logo{
+    width: 80px;
+  height: 80px;
+  object-fit: contain; /* Keeps the aspect ratio */
+  }
+  .dotnet-logo{
+    width: 90px;
+  height: 90px;
+
+  
+  }
+  

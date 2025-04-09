@@ -40,3 +40,20 @@
   max-height: 200px;
   object-fit: contain;
 }
+
+/* For mobile devices */
+@media (max-width: 767px) {
+  .carousel-container {
+    height: auto; /* Allow the height to adjust based on content */
+  }
+
+  .carousel-image {
+    max-width: 90%; /* Limit the image width to avoid crowding */
+    max-height: 90%; /* Limit the image height to prevent overflow */
+  }
+
+  .image-container {
+    min-height: 150px; /* Adjust minimum height for mobile */
+    margin-top: 20px;
+  }
+}

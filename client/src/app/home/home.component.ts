@@ -9,10 +9,11 @@ import { BlogCarouselComponent } from "../blog-carousel/blog-carousel.component"
 import { EducationComponent } from "../education/education.component";
 import { ActivatedRoute } from '@angular/router';
 import { AssetLoaderService } from '../_services/asset-loader.service';
+import { ExpertiseComponent } from "../expertise/expertise.component";
 
 @Component({
   selector: 'app-home',
-  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent],
+  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent, ExpertiseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

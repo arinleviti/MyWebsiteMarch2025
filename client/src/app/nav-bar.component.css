@@ -44,10 +44,12 @@
 
   .navbar-nav .nav-item {
     margin-right: 0; /* Remove right margin on mobile */
+
+    margin-bottom: 1px; /* Add bottom margin to space out items vertically */
   }
 
   .navbar-nav .nav-link {
-    padding: 0.75rem;  /* Adjust padding for mobile */
+    padding: 0.65rem;  /* Adjust padding for mobile */
   }
 }
 
