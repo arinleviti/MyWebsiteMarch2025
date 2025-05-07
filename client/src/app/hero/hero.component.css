@@ -27,6 +27,10 @@
     .profile-image img {
       max-width: 60%; /* Makes image smaller on mobile */
     }
+    .waves-button {
+      left: 0px !important;  /* Move button further left with higher specificity */
+      
+    }
   }
   .video-container {
     position: absolute;
@@ -101,4 +105,15 @@
     padding-left: 30px !important; /* Add left padding on mobile */
     padding-right: 30px !important; /* Optional: add right padding for balance */
   }
+}
+
+.background-imageIos{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
 }

@@ -11,6 +11,6 @@ export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'blog', component: BlogPageComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'blogForms', component: BlogFormComponent, canActivate: [editGuard]},
+    {path: 'blogforms', component: BlogFormComponent, canActivate: [editGuard]},
     {path: 'auth', component: EditAuthComponent } 
 ];

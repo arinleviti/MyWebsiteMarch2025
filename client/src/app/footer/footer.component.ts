@@ -1,7 +1,8 @@
-import { Component, ElementRef, inject, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { PrivacyComponent } from "../modals/privacy/privacy.component";
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CookieConsentComponent } from "../cookie-consent/cookie-consent.component";
+import { AnalyticsService } from '../_services/analytics.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,9 +10,11 @@ import { CookieConsentComponent } from "../cookie-consent/cookie-consent.compone
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();
   constructor(private modalService: BsModalService) {}
+  
+  analyticsService = inject(AnalyticsService);
 
   openPrivacyModal() {
     this.modalService.show(PrivacyComponent, {
@@ -47,5 +50,10 @@ export class FooterComponent {
     }
   }
 
+
+  ngOnInit(){
+    this.analyticsService.trackEvent('footer', 'footer loaded', 'footer loaded');
+
+  }
  
 }

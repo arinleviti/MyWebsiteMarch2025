@@ -7,13 +7,14 @@ import { AssetLoaderService } from '../_services/asset-loader.service';
 
 @Component({
   selector: 'app-hero',
-  imports: [ProfileImageComponent, NgIf],
+  imports: [ProfileImageComponent],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
 export class HeroComponent implements AfterViewInit {
   @ViewChild('backgroundVideoElement') backgroundVideoElement!: ElementRef; // Reference to the video container
   assetLoader = inject(AssetLoaderService); // Inject the AssetLoaderService to preload assets
+
 
   video: HTMLVideoElement | undefined;
 
@@ -43,6 +44,9 @@ export class HeroComponent implements AfterViewInit {
     this.backgroundVideoElement.nativeElement.appendChild(this.video);
   
     this.video.play().catch(e => console.log('Autoplay issue:', e));
+
+    // Fallback: listen for first swipe/touch to play
+   /*  window.addEventListener('touchstart', this.tryPlayOnce, { once: true }); */
   }
 
   playVideo() {
@@ -53,6 +57,7 @@ export class HeroComponent implements AfterViewInit {
       this.video.pause(); // Pause the video if it's playing
     }
   }
+
 }
 
  
