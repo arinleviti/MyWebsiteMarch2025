@@ -5,30 +5,30 @@
  
 
     <a class="navbar-brand ml-3" href="#">Arin Leviti</a> <!-- Add margin-left -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" #navbarCollapse>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" (click)="closeMenu()" href="#home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/blog">Blog</a>
+          <a class="nav-link"(click)="closeMenu()" routerLink="/blog" >Blog</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link" href="#projects" (click)="$event.preventDefault(); scrollToSection('projects')">Projects</a>
+          <a  class="nav-link" href="#projects" (click)="closeMenu(); goToProjects()">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mailto:arin.leviti@gmail.com">Contact</a>
+          <a class="nav-link" href="mailto:arin.leviti@gmail.com" (click)="closeMenu()">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://drive.google.com/file/d/1jBSfRb5HviWMverflp7Wf1RXk9Rnu1xv/view?usp=drive_link">My CV</a>
+          <a class="nav-link"(click)="closeMenu()" href="https://drive.google.com/file/d/1jBSfRb5HviWMverflp7Wf1RXk9Rnu1xv/view?usp=drive_link">My CV</a>
         </li>
         <li class=" github-icon">
-         <a class="nav-link" href="https://github.com/arinleviti" target="_blank"><i class="fa-brands fa-github nav-link" ></i></a>
+         <a class="nav-link" (click)="closeMenu()" href="https://github.com/arinleviti" target="_blank"><i class="fa-brands fa-github nav-link" ></i></a>
          <li class=" linkedin-icon">
-          <a class="nav-link" href="https://www.linkedin.com/in/arin-leviti-b169bb18/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>  
+          <a class="nav-link" (click)="closeMenu()" href="https://www.linkedin.com/in/arin-leviti-b169bb18/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>  
           
           
         </li>

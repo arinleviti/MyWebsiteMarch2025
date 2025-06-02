@@ -11,13 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 import { AssetLoaderService } from '../_services/asset-loader.service';
 import { ExpertiseComponent } from "../expertise/expertise.component";
 
+import { AfterViewInit } from '@angular/core';
+
 @Component({
   selector: 'app-home',
   imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent, ExpertiseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   videoReady: boolean = false;
   assetLoader = inject(AssetLoaderService);
   imagesLoaded = false;
@@ -25,6 +27,9 @@ export class HomeComponent implements OnInit {
   imagesUrls = [
     'https://res.cloudinary.com/dvr9t29vj/image/upload/v1742809780/aragonai-9a4d9777-c4a5-49a7-9ff9-b8f2ed4fc6a6_mvdem8.jpg']
   videosUrls = ['/bgvideo.webm']
+
+
+route = inject(ActivatedRoute);
 
   //preload images and videos
 
@@ -55,6 +60,18 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  
+  ngAfterViewInit() {
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        // Delay needed to ensure all elements have rendered
+        setTimeout(() => {
+          const section = document.getElementById(fragment);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    });
+  }
 }
 

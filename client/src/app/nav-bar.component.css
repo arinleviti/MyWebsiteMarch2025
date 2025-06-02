@@ -34,55 +34,68 @@
   letter-spacing: 1px;  /* Space out letters for a cleaner look */
 
 }
+.navbar-toggler {
+  position: absolute;  /* Allows free positioning */
+  top: 25px;           /* Adjust as needed */
+  right: 25px;         /* Adjust to push it left/right */
+  z-index: 1001;       /* Above the blur if needed */
+}
 
 /* Center navbar items on mobile */
 @media (max-width: 767px) {
-  .navbar-nav {
-    text-align: right; /* Center navbar items */
-    width: 100%;
+  
+/* Make the collapsible menu appear as a full-width dropdown */
+  .navbar-collapse {
+    position: absolute;         /* Take it out of the normal flow so we can place it freely */
+    top: 100%;                  /* Position it just below the fixed navbar */
+    left: 0;                    /* Align it to the left edge */
+    width: 100%;                /* Make it span the entire screen width */
+    background-color: #8ca6fb;   /* Give it a visible background so content is readable */
+    z-index: 999;              /* Place it above other content */
+    padding: 1rem 1.5rem;      /* Add padding for spacing inside the menu */
+
   }
 
+  .navbar-nav {
+    text-align: center; /* Center navbar items */
+    width: 100%;
+  }
   .navbar-nav .nav-item {
-    margin-right: 0; /* Remove right margin on mobile */
-
-    margin-bottom: 1px; /* Add bottom margin to space out items vertically */
+   width: 100%;               /* Each <li> stretches full width */
+    margin-right: 0;           /* Remove default horizontal spacing */
+    margin-bottom: 5px; 
+    padding-top: 10px;  
+    padding-bottom: 10px;     /* Add space between items vertically */
   }
 
   .navbar-nav .nav-link {
-    padding: 0.65rem;  /* Adjust padding for mobile */
+    display: block;            /* Block-level element so it fills the width of its container */
+    width: 100%;               /* Ensure it takes the full width */
+    padding: 0.75rem 1rem;     /* Comfortable clickable area on mobile */ 
   }
 }
 
-/* When navbar is scrolled, add background */
-.navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.9);
-}
 .navbar-brand {
-  padding-left: 20px; /* Adds padding to the left of the logo */
+  padding-left: 20px; 
   font-size: 35px;
 }
-.navbar-collapse{
-  padding-left: 60px;
-}
+
 
 .github-icon {
   margin-top: -15px;
- /* Moves it 5px downward */
+ 
 }
 
 .github-icon .nav-link {
-  font-size: 1.2em; /* Makes it 20% larger */
-  /* Alternative size controls: */
-  /* width: 24px; height: 24px; */
+  font-size: 1.2em; 
+  
 }
 
 .linkedin-icon {
   margin-top: -10px;
- /* Moves it 5px downward */
+
 }
 
 .linkedin-icon .nav-link {
-  font-size: 1.6em; /* Makes it 20% larger */
-  /* Alternative size controls: */
-  /* width: 24px; height: 24px; */
+  font-size: 1.6em; 
 }
