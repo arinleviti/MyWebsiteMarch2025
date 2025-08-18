@@ -81,9 +81,19 @@ export class BlogFormComponent implements OnInit {
     this.hasBaseDropZoneOver = e;
   }
 
-  ngOnInit(): void {
-    this.initializeUploader();
+ngOnInit(): void {
+  this.initializeUploader();
+
+  const p = this.post();
+  if (p) { // only run if p is not undefined
+    this.blogForm.patchValue({
+      title: p.title,
+      content: p.content,
+      creationDate: new Date(p.creationDate ?? new Date())
+    });
+    this.postId = p.id || 0;
   }
+}
 
 initializeUploader() {
   this.uploader = new FileUploader({

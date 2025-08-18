@@ -20,7 +20,7 @@ export class EditAuthComponent {
  verifyPassword() {
     if (this.password === this.correctPassword) {
       sessionStorage.setItem('editAuth', 'true');
-      this.router.navigate(['/blogForms']);
+      this.router.navigate(['/blogforms']);
     } else {
       this.error = true;
       this.password = '';

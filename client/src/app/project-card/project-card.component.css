@@ -38,3 +38,15 @@
   margin: 0;
   color: white;
 }
+
+/* Mobile screens */
+@media (max-width: 576px) {
+  .text-container h5 {
+    font-size: 0.8rem; /* half the size */
+  }
+
+  .text-container p {
+    font-size: 0.6rem; /* half the size */
+  }
+ 
+}
