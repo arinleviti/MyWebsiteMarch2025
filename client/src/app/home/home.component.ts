@@ -10,12 +10,12 @@ import { EducationComponent } from "../education/education.component";
 import { ActivatedRoute } from '@angular/router';
 import { AssetLoaderService } from '../_services/asset-loader.service';
 import { ExpertiseComponent } from "../expertise/expertise.component";
-
+import { ProjectsComponent } from '../projects-component/projects-component.component';
 import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
-  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent, ExpertiseComponent],
+  imports: [NavBarComponent, HeroComponent, JourneyComponent, MonsterMatchComponent, FinalBattleComponent, ExperienceComponent, BlogCarouselComponent, EducationComponent, ExpertiseComponent, ProjectsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

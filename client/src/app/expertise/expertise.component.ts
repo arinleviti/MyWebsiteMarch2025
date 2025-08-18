@@ -18,11 +18,11 @@ export class ExpertiseComponent {
     const initialState: ModalOptions = {
       initialState: {
         title: 'Archive',
-        message: 'This the old version of my website, created with Razor Pages. While the design is outdated, it demonstrates backend logic and SQL integration that laid the foundation for my current full-stack skills.',
-        linkUrl: 'https://mywebsitenov2024-bvgnhxfrcecmaaf9.italynorth-01.azurewebsites.net/',
-        title2: 'Real-Time Dating App (Angular, Tutorial-Based Project)',
+        message: 'Template for a burger restaurant. The site uses responsive design to look good on all devices.',
+        linkUrl: 'https://heroic-lamington-f2f9a1.netlify.app/',
+     /*    title2: 'Real-Time Dating App (Angular, Tutorial-Based Project)',
         message2: 'Skills Learned: WebSockets, Reactive Forms, Identity and Role Management, SignalR, Child to Parent and Parent to Child Communication, Route Guards, Pagination, Unit of Work Pattern, Caching. Login: Lisa, Password: Pa$$w0rd',
-        linkUrl2: 'https://dating-app-course-baapdfdrfxbeeme4.italynorth-01.azurewebsites.net/'
+        linkUrl2: 'https://dating-app-course-baapdfdrfxbeeme4.italynorth-01.azurewebsites.net/' */
       }
     }
     this.bsModalRef = this.modalService.show(ArchiveModalComponent, initialState); // Open the modal with the specified initial state

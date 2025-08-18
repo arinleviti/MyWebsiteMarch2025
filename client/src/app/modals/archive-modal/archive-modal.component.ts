@@ -14,9 +14,9 @@ export class ArchiveModalComponent {
  message = input<string>();
  linkUrl = input<string>();
 
- title2 = input<string>();
+/*  title2 = input<string>();
  message2 = input<string>();
- linkUrl2 = input<string>();
+ linkUrl2 = input<string>(); */
 
  public modalRef = inject (BsModalRef); // Inject the modal reference for closing the modal
 }

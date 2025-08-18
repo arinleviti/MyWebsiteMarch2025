@@ -44,8 +44,17 @@ export class AssetLoaderService {
     });
   }
   
-  getVideoElement(url: string): HTMLVideoElement | undefined {
-    return this.videos.get(url);
+    getVideoElement(url: string): HTMLVideoElement | undefined {
+    const original = this.videos.get(url);
+    if (!original) return undefined;
+
+    // Clone so hover/play doesn't affect the original
+    const clone = original.cloneNode(true) as HTMLVideoElement;
+    clone.muted = true;
+    clone.loop = true;
+    clone.playsInline = true;
+    clone.setAttribute('playsinline', '');
+    return clone;
   }
   
 

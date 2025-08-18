@@ -1,0 +1,21 @@
+<div
+  #videoContainer
+  class="position-relative h-100"
+  (mouseenter)="playVideo()"
+  (mouseleave)="pauseVideo()"
+>
+  <!-- Video is appended here dynamically -->
+
+  <!-- Text overlay with clickable link -->
+  <div class="text-container text-center position-absolute w-100 bottom-0 mb-3">
+    <a
+      *ngIf="project.linkUrl"
+      [href]="project.linkUrl"
+      target="_blank"
+      class="text-white text-decoration-none"
+    >
+      <h5 class="m-0">{{ project.title }}</h5>
+      <p class="m-0">{{ project.description }}</p>
+    </a>
+  </div>
+</div>
