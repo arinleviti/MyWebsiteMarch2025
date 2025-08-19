@@ -1,19 +1,53 @@
-<!-- Hero Container: Holds everything -->
 <div class="hero-container">
 
-    <!-- Background Video -->
+  <!-- Background Video -->
+  <div class="video-container">
+    <div #backgroundVideoElement></div>
+  </div>
+
+  <!-- Language Selector -->
+  <div class="text-end p-2">
+    <select #langSelect (change)="changeLang(langSelect.value)">
+      <option value="en">🇬🇧 English</option>
+      <option value="it">🇮🇹 Italiano</option>
+    </select>
+  </div>
+
+  <div class="row align-items-center">
+    <!-- Left Side: Profile Image -->
+    <div class="col-md-6 text-center">
+      <button class="waves-button" (click)="playVideo()">Waves!</button>
+      <app-profile-image></app-profile-image>
+    </div>
+
+    <!-- Right Side: Hero Text -->
+    <div class="col-md-6">
+      <h1 class="display-4">{{ 'TITLE' | translate }}</h1>
+      <p class="lead" [innerHTML]="'DESCRIPTION' | translate"></p>
+      <a href="mailto:arin.leviti@gmail.com" class="btn btn-primary">
+        {{ 'CONTACT' | translate }}
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- 
+<div class="hero-container">
+
+
   <div class="video-container">
     <div  #backgroundVideoElement></div>
   </div>
 
   <div class="row align-items-center">
-    <!-- Left Side: Profile Image Component -->
+  
     <div class="col-md-6 text-center">
       <button class="waves-button" (click)="playVideo() ">Waves!</button>
       <app-profile-image></app-profile-image>
     </div>
 
-    <!-- Right Side: Hero Text -->
+
     <div class="col-md-6">
       <h1 class="display-4">React | TypeScript | .NET | Angular</h1>
       <p class="lead">
@@ -25,3 +59,4 @@
     </div>
   </div>
 </div>
+ -->

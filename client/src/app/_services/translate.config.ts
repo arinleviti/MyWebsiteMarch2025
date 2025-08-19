@@ -1,18 +1,15 @@
-
-
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { routes } from './app.routes';
+import { routes } from '../app.routes';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-// Factory to load JSON files from assets/i18n/
+// Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
-  //TranslateHttpLoader is a class that knows how to fetch JSON files via HTTP.
   return new TranslateHttpLoader(http, '/i18n/', '.json');
 }
 
@@ -28,8 +25,7 @@ export const appConfig: ApplicationConfig = {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
-        },
-        defaultLanguage: 'en'
+        }
       })
     )
   ]

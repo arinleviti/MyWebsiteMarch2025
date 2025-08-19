@@ -1,66 +1,64 @@
-import { AfterViewInit, Component, ElementRef, inject, OnInit, output, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ProfileImageComponent } from '../profile-image/profile-image.component';
-import { ActivatedRoute } from '@angular/router';
-import { NgIf } from '@angular/common';
 import { AssetLoaderService } from '../_services/asset-loader.service';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hero',
-  imports: [ProfileImageComponent],
+  standalone: true,
+  imports: [ProfileImageComponent, TranslateModule],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.css'
+  styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements AfterViewInit {
-  @ViewChild('backgroundVideoElement') backgroundVideoElement!: ElementRef; // Reference to the video container
-  assetLoader = inject(AssetLoaderService); // Inject the AssetLoaderService to preload assets
+  @ViewChild('backgroundVideoElement') backgroundVideoElement!: ElementRef;
+  private assetLoader = inject(AssetLoaderService);
+  private translate = inject(TranslateService);
 
+  video?: HTMLVideoElement;
 
-  video: HTMLVideoElement | undefined;
+  constructor() {
+    const lang = localStorage.getItem('lang') || 'en';
+    this.translate.setDefaultLang('en');
+    this.translate.use(lang);
+  }
+
+  changeLang(lang: string) {
+    this.translate.use(lang);
+    localStorage.setItem('lang', lang);
+  }
 
   ngAfterViewInit() {
     const url = '/bgvideo.webm';
     const video = this.assetLoader.getVideoElement(url);
-  
-    if (!video) {
-      console.error('Video not available yet.');
-      return;
-    }
-  
-    // Clone and configure
+    if (!video) return;
+
     this.video = video.cloneNode(true) as HTMLVideoElement;
+    Object.assign(this.video.style, {
+      position: 'absolute',
+      zIndex: '-1',
+      top: '0',
+      left: '50%',
+      translate: '-50%',
+      width: '100%',
+      minHeight: '100%',
+      objectFit: 'cover'
+    });
     this.video.autoplay = true;
     this.video.loop = true;
     this.video.muted = true;
-    this.video.style.position = 'absolute';
-    this.video.style.zIndex = '-1';
-    this.video.style.top = '0';
-    this.video.style.left = '50%';
-    this.video.style.translate = '-50%';
-    this.video.style.width = '100%';
-    this.video.style.minHeight = '100%';
-    this.video.style.objectFit = 'cover';
-  
-    this.backgroundVideoElement.nativeElement.appendChild(this.video);
-  
-    this.video.play().catch(e => console.log('Autoplay issue:', e));
 
-    // Fallback: listen for first swipe/touch to play
-   /*  window.addEventListener('touchstart', this.tryPlayOnce, { once: true }); */
+    this.backgroundVideoElement.nativeElement.appendChild(this.video);
+    this.video.play().catch(e => console.log('Autoplay prevented:', e));
   }
 
   playVideo() {
     if (!this.video) return;
-    if (this.video.paused) {
-      this.video.play().catch(e => console.log('Auto-play prevented:', e));   
-    } else {
-      this.video.pause(); // Pause the video if it's playing
-    }
+    if (this.video.paused) this.video.play().catch(() => {});
+    else this.video.pause();
   }
-
 }
 
- 
  
 
 

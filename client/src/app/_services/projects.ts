@@ -9,16 +9,16 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'Hero Burger',
-    description: 'Paid project: responsive React and Next.js website for a real restaurant. Includes Framer Motion animations, dynamic menu filtering, a Supabase-powered blog with CRUD, and a Swiper carousel for featured items.',
+    description: 'Responsive React and Next.js website for a restaurant in Predazzo, Italy. Includes Framer Motion animations, dynamic menu filtering, a Supabase-powered blog with CRUD, and a Swiper carousel for featured items.',
     videoUrl: '/HeroBurger.mp4',
-    posterUrl: '/HeroBurgerPoster.jpg',
+    posterUrl: '/HeroBurgerPoster.webp',
     linkUrl: 'https://herolacasadelburger.it'
   },
   {
     title: 'Restaurant template',
     description: 'A customizable restaurant website template built with React.',
     videoUrl: '/BestBurgers.mp4',
-    posterUrl: '/BestBurgersPoster.jpg',
+    posterUrl: '/BestBurgersPoster.webp',
     linkUrl: 'https://heroic-lamington-f2f9a1.netlify.app/'
   }
 ];
