@@ -1,30 +1,38 @@
-<div class="carousel-container" style="height: 500px;">
-  
+
+<div class="carousel-container">
+
   @if(slides.length > 0) {
-  <carousel 
-  [startFromIndex]="0" 
-  [itemsPerSlide]="itemsPerSlide" 
-  [singleSlideOffset]="singleSlideOffset" 
-  [noWrap]="noWrap" 
-  [interval]="0" 
-  [startFromIndex]="0"
-  (slideRangeChange)="onSlideRangeChange($event)">
+    <carousel 
+      [startFromIndex]="0" 
+      [itemsPerSlide]="itemsPerSlide" 
+      [singleSlideOffset]="singleSlideOffset" 
+      [noWrap]="noWrap" 
+      [interval]="0" 
+      (slideRangeChange)="onSlideRangeChange($event)">
 
-    <slide *ngFor="let slide of slides; let index=index">
-      
-      <div class="text-center py-5 bg-white text-#232428 ">
-        <h2>{{ slide.title }}</h2>
-        <i class="fa fa-light fa-comments"></i>
-        <div class="image-container">
-          <a routerLink="/blog" href="">
-          <img  class="carousel-image" [src]="slide.image" (error)="setDefaultImage($event)" />
-        </a>
+      <!-- Limit to first 3 slides -->
+      <slide #carouselSlide *ngFor="let slide of slides.slice(0,3); let index=index" class="carousel-item">
+
+        <div class="slide-content">
+
+          <div class="text-center py-5 bg-white text-#232428">
+            <h2>{{ slide.title }}</h2>
+            <i class="fa fa-light fa-comments"></i>
+          </div>
+
+          <div class="image-container">
+            <a routerLink="/blog">
+              <img class="carousel-image" [src]="slide.image" (error)="setDefaultImage($event)" />
+            </a>
+          </div>
+
         </div>
-      </div>
-    </slide>
 
-  </carousel>
+      </slide>
+
+    </carousel>
   }
 
 </div>
+
 

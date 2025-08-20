@@ -1,9 +1,12 @@
 .welcome {
-    padding-left: 50px;
-    padding-bottom:20px;
-    padding-top: 130px;
-    border-top: #232428 solid 2px;
-    position: relative; /* Add this */
+  position: relative;
+  height: 250px;
+  width: 100%;
+  padding-left: 50px;
+  padding-top: 130px;
+  padding-bottom: 20px;
+  border-top: 2px solid #232428;
+  z-index: 1; /* content above video */
 }
 .posts-container {
 border-top: #232428 solid 2px;
@@ -16,6 +19,24 @@ border-bottom: #232428 solid 2px;
      /* Space between posts */
     isolation: isolate; /* Creates new stacking context */
     overflow: hidden; /* Add this to contain the background */
+}
+ .video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* behind content */
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .post-bg {
     position: absolute;
@@ -35,7 +56,10 @@ app-blog-post {
     display: block;
 
 }
-
+.welcome h1 {
+  position: relative;
+  z-index: 2;
+}
 /* Center the pagination container */
 .custom-pagination {
     display: flex;
@@ -43,7 +67,10 @@ app-blog-post {
     align-items: center;      /* Center vertically */
     margin-top: 20px;         /* Adjust the top margin to your liking */
   }
-  
-
+  @media (max-width: 768px) {
+   .post-bg {
+       background-size: cover; /* Ensure background covers the area */
+   }
+  }
   
   

@@ -1,23 +1,38 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 .section {
-    display: flex; /* Enables flexbox */
-    flex-direction: column; /* Stacks items vertically */
-    align-items: center; /* Centers horizontally */
-    text-align: center; /* Ensures text is also centered */
-    padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
 }
 
 .game-image {
-    max-height: 120px; /* Keeps the aspect ratio */
-    width: auto;
+  max-height: 120px;
+  width: auto;
+}
 
-}
 .section p {
-    font-weight: 300; /* Matches Bootstrap's .lead */
+  font-weight: 300;
+  font-size: 1rem;
 }
+
 .link-to-final-battle-game {
-    padding-top: 30px;
-    font-size: 18px;
+  padding-top: 1rem;
+  font-size: 1rem;
 }
+
 .link-to-repo {
-    font-size: 18px;
+  font-size: 1rem;
 }

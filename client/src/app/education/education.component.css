@@ -26,3 +26,9 @@
   font-size: 18px;
     font-weight: 300; /* Matches Bootstrap's .lead */
 }
+.experience-card h4 {
+  font-size: 1.5rem;
+}
+.experience-card p {
+  font-size: 1rem;
+}

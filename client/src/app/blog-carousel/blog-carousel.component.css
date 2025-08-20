@@ -1,59 +1,79 @@
 .carousel-container {
-  height: 500px;
-  
+  height: 500px; /* fixed height for desktop */
+}
+
+.carousel-container h2 {
+  font-size: 1.5rem;
+}
+
+.carousel-container i {
+  font-size: 1.5rem;
 }
 
 .carousel {
   max-width: 100%;
-  height: 100%;
+  height: 100%; /* fill the carousel container */
   overflow: hidden;
-  border-top: 2px solid #232428;
   display: flex;
+  border-top: 2px solid #232428;
 }
+
 .carousel-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%; /* fill height fully */
   border-top: 2px solid #232428;
   border-bottom: 2px solid #232428;
   border-left: 2px solid #232428;
 }
 
-.text-center {
-  height: 100%;
+.slide-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  flex: 1 1 100%; /* fill the slide-item */
   padding: 20px;
 }
 
+
 .image-container {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
   min-height: 200px;
-  margin-top: 40px;
-  /* background-color: #d5dff7 !important; */
   background-image: url('https://res.cloudinary.com/dvr9t29vj/image/upload/v1743692432/WavesResized_leheoa.png');
-  background-position: left bottom;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 100%; /* <-- stretch to full container */
 }
+
 .carousel-image {
   max-width: 200px;
   max-height: 200px;
   object-fit: contain;
 }
 
-/* For mobile devices */
+/* Mobile adjustments */
 @media (max-width: 767px) {
   .carousel-container {
-    height: auto; /* Allow the height to adjust based on content */
-  }
+    height: auto; /* allow carousel to shrink */
 
+  }
+.slide-content h2{
+ font-size:1rem;
+}
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%; /* fill the slide-item */
+  padding: 0rem 0;
+}
   .carousel-image {
-    max-width: 90%; /* Limit the image width to avoid crowding */
-    max-height: 90%; /* Limit the image height to prevent overflow */
+    max-width: 90%;
+    max-height: 90%;
   }
 
   .image-container {
-    min-height: 150px; /* Adjust minimum height for mobile */
-    margin-top: 20px;
+    min-height: 150px;
   }
 }

@@ -23,6 +23,12 @@
   padding-right: 15px;
 }
 .experience-description{
-  font-size: 18px;
+  font-size: 1rem;
     font-weight: 300; /* Matches Bootstrap's .lead */
+}
+.experience-card h4 {
+  font-size: 1.5rem;
+}
+.experience-card i {
+  font-size: 1.5rem;
 }
