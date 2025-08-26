@@ -14,7 +14,8 @@ export class NavBarComponent {
  @ViewChild('navbarToggler', { static: false }) navbarToggler!: ElementRef;
 
  router = inject(Router);
-
+ showBot = false; // bot visibility
+ toggleVisible = false;  // toggle visibility
  closeMenu() {
     // Only simulate the button click if the menu is currently open
     const isMenuOpen = document.querySelector('#navbarNav')?.classList.contains('show');
@@ -59,6 +60,11 @@ export class NavBarComponent {
     }
   }
   
-
- 
+ toggleBot() {
+  this.showBot = !this.showBot;
+}
+  ngAfterViewInit() {
+    // Make the toggle visible once Angular has rendered the view
+    this.toggleVisible = true;
+  }
 }

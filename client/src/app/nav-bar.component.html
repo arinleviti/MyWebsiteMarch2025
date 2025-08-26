@@ -35,5 +35,20 @@
       </ul>
     </div>
   </nav>
+  <!-- Bot iframe (absolute/fullscreen) -->
+   <div class="bot-iframe-container" [class.hidden]="!showBot">
+      <iframe 
+        src="https://arin-bot.onrender.com" 
+        title="Arin Bot"
+    frameborder="0">
+  </iframe>
+</div>
+    
+<!-- Bot Toggle Button -->
+ @if(toggleVisible) {
+<button class="bot-toggle" (click)="toggleBot()" title="Open Chat">
+   <img src="/arin-bot.webp" alt="Chat" />
+</button>
+ }
 
   
