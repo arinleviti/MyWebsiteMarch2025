@@ -19,7 +19,7 @@ export class ProjectCardComponent implements AfterViewInit {
   ngAfterViewInit() {
     // create a fresh video element for each card
     this.video = document.createElement('video');
-    this.video.src = this.project.videoUrl;
+   /*  this.video.src = this.project.videoUrl; */
     this.video.poster = this.project.posterUrl;
     this.video.muted = true;
     this.video.loop = true;
@@ -34,11 +34,18 @@ export class ProjectCardComponent implements AfterViewInit {
     this.videoContainer.nativeElement.appendChild(this.video);
   }
 
-  playVideo() {
+  /* playVideo() {
     if (!this.video) return;
     this.video.play().catch(() => {}); // only plays after user interaction
+  } */
+ playVideo() {
+    if (!this.video.src) {
+      // only load the video file when needed
+      this.video.src = this.project.videoUrl;
+      this.video.load();
+    }
+    this.video.play().catch(() => {});
   }
-
   pauseVideo() {
     if (!this.video) return;
     this.video.pause();
