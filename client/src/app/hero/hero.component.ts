@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
+/* import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ProfileImageComponent } from '../profile-image/profile-image.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -63,10 +63,10 @@ export class HeroComponent implements AfterViewInit {
     this.translate.use(lang);
     localStorage.setItem('lang', lang);
   }
-}
+} */
 
 
-/* import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
+ import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { ProfileImageComponent } from '../profile-image/profile-image.component';
 import { AssetLoaderService } from '../_services/asset-loader.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -96,28 +96,29 @@ export class HeroComponent implements AfterViewInit {
     localStorage.setItem('lang', lang);
   }
 
-  ngAfterViewInit() {
+ ngAfterViewInit() {
     const url = 'https://res.cloudinary.com/doydy0awd/video/upload/f_auto,q_auto/v1756472201/bgvideo_nrt3ps.webm';
-    const video = this.assetLoader.getVideoElement(url);
-    if (!video) return;
+    //If not loaded yet, it loads and waits until ready.
+    this.assetLoader.getOrLoadVideo(url).then(video => {
+      if (!video) return;
 
-    this.video = video.cloneNode(true) as HTMLVideoElement;
-    Object.assign(this.video.style, {
-      position: 'absolute',
-      zIndex: '-1',
-      top: '0',
-      left: '50%',
-      translate: '-50%',
-      width: '100%',
-      minHeight: '100%',
-      objectFit: 'cover'
+      this.video = video;
+      Object.assign(this.video.style, {
+        position: 'absolute',
+        zIndex: '-1',
+        top: '0',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '100%',
+        minHeight: '100%',
+        objectFit: 'cover'
+      });
+      //hat’s why ngAfterViewInit is the right place to use @ViewChild:
+      //Before this point, this.backgroundVideoElement doesn’t exist yet.
+      //After this point, it points to the actual <div> you declared in the template. you want to append a <video> inside that <div>. That’s only safe after ngAfterViewInit.
+      this.backgroundVideoElement.nativeElement.appendChild(this.video);
+      this.video.play().catch(e => console.log('Autoplay prevented:', e));
     });
-    this.video.autoplay = true;
-    this.video.loop = true;
-    this.video.muted = true;
-
-    this.backgroundVideoElement.nativeElement.appendChild(this.video);
-    this.video.play().catch(e => console.log('Autoplay prevented:', e));
   }
 
   playVideo() {
@@ -126,11 +127,4 @@ export class HeroComponent implements AfterViewInit {
     else this.video.pause();
   }
 }
- */
  
-
-
-
-
-
-

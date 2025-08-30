@@ -23,24 +23,26 @@ export class AssetLoaderService {
     });
   }
 
+  // --- Videos ---
   preloadVideo(url: string): Promise<void> {
     if (this.videos.has(url)) return Promise.resolve();
-  
+
     return new Promise((resolve, reject) => {
       const video = document.createElement('video');
       video.preload = 'auto';
       video.muted = true;
+      video.loop = true;
       video.playsInline = true;
       video.setAttribute('playsinline', '');
       video.src = url;
-      // This runs when the video is fully loaded (or nearly so)
+      // When the loadeddata event happens on this video element, run this function.
       video.onloadeddata = () => {
-        this.videos.set(url, video); // Store the full element
+        this.videos.set(url, video);
         resolve();
       };
-  
+
       video.onerror = reject;
-      video.load(); // Trigger loading
+      video.load();
     });
   }
   
@@ -56,7 +58,26 @@ export class AssetLoaderService {
     clone.setAttribute('playsinline', '');
     return clone;
   }
-  
+  /**
+   * Either returns a cached clone immediately,
+   * or preloads first if not yet cached.
+   */
+  async getOrLoadVideo(url: string): Promise<HTMLVideoElement | undefined> {
+    if (!this.videos.has(url)) {
+      await this.preloadVideo(url);
+    }
+
+    const original = this.videos.get(url);
+    if (!original) return undefined;
+
+    // Clone so each usage has its own playback state
+    const clone = original.cloneNode(true) as HTMLVideoElement;
+    clone.muted = true;
+    clone.loop = true;
+    clone.playsInline = true;
+    clone.setAttribute('playsinline', '');
+    return clone;
+  }
 
 
   getImage(src: string): HTMLImageElement | undefined {
